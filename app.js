@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const routes = require("./api/routes");
 
 app.set("port", 3000);
 
@@ -9,6 +10,7 @@ app.use(function(req, res, next){
   next();
 })
 
+app.use("/api", routes);
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 
